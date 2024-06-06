@@ -1,4 +1,4 @@
-package com.student.student;
+package com.vegetable_API;
 
 import jakarta.persistence.*;
 
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Entity(name="product")
 @Table(name="product",
        uniqueConstraints = {
-        @UniqueConstraint(name="product_email_unique",columnNames="Emaill")
+        @UniqueConstraint(name="product_name_unique",columnNames="Name")
        })
 public class Product {
     @Id
@@ -23,11 +23,11 @@ public class Product {
     )
     private int ID;
     @Column(
-            name="Emaill",
+            name="Name",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private String email;
+    private String name;
 
     @Column(
             name="price",
@@ -49,14 +49,14 @@ public class Product {
 
     public Product(int ID, String name, double price, String catagori, String avilable) {
         this.ID = ID;
-        this.email = name;
+        this.name = name;
         this.Price = price;
         this.Catagori = catagori;
         this.Avilable = avilable;
     }
 
     public Product(String name, double price, String catagori, String avilable) {
-        this.email = name;
+        this.name = name;
         this.Price = price;
         this.Catagori = catagori;
         this.Avilable = avilable;
@@ -87,10 +87,10 @@ public class Product {
     }
 
     public String getName() {
-        return email;
+        return name;
     }
 
     public void setName(String name) {
-        email = name;
+        name = name;
     }
 }

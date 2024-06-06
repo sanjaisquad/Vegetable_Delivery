@@ -1,4 +1,4 @@
-package com.student.student;
+package com.vegetable_API;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +16,8 @@ public class ProductControler {
 
     @GetMapping
     public List<Product> getStudent(){
+        System.out.println("333333333333333333333333333333333333333333333333333333333");
+
         return productService.getStudentData();
     }
     @PostMapping

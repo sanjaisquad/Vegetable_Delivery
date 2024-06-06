@@ -1,4 +1,4 @@
-package com.student.student;
+package com.vegetable_API;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,19 +19,17 @@ public class ProductService {
         return productRepository.findAll();
     }
     public void addNewStudent(Product product){
-        if(productRepository.findByEmail(product.getName()).isPresent()){
-            throw new IllegalStateException("Email taken");
+        if(productRepository.findByName(product.getName()).isPresent()){
+            throw new IllegalStateException("Name taken");
         }
        productRepository.save(product);
-        System.out.println("lasdkjfsl");
     }
-    public void deleteStudent(int studentID){
-    boolean exists = productRepository.existsById(studentID);
-        System.out.println(exists);
+    public void deleteStudent(int productId){
+    boolean exists = productRepository.existsById(productId);
     if(!exists){
-        throw  new IllegalStateException("Student whit id "+ studentID+"does not exists");
+        throw  new IllegalStateException("Student whit id "+ productId+"does not exists");
     }
-    productRepository.deleteById(studentID);
+    productRepository.deleteById(productId);
     }
 
     @Transactional
@@ -43,7 +41,7 @@ public class ProductService {
             System.out.println("product price updated successfully");
         }
         if(name!=null && name.length() > 0 && !Objects.equals(product.getName(),name)){
-            Optional<Product> studentOptional = productRepository.findByEmail(name);
+            Optional<Product> studentOptional = productRepository.findByName(name);
             if(studentOptional.isPresent()){
             product.setName(name);
             System.out.println("Product name updated successfully");}
