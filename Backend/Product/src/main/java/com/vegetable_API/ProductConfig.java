@@ -9,7 +9,7 @@ public class ProductConfig {
     @Bean
     CommandLineRunner CommandLineRunner(ProductRepository repository) {
         return args -> {
-            Product product1 = new Product("Apple",23,"fruit","Yes");
+            Product product1 = new Product("Apple",23.2,"fruit","Yes");
 
             repository.save(product1);
 

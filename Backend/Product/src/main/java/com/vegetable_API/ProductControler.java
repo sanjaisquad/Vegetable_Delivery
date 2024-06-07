@@ -15,30 +15,26 @@ public class ProductControler {
     }
 
     @GetMapping
-    public List<Product> getStudent(){
-        System.out.println("333333333333333333333333333333333333333333333333333333333");
-
-        return productService.getStudentData();
+    public List<Product> getProducts(){
+        return productService.getProductData();
     }
     @PostMapping
-    public void registerNewStudent(@RequestBody Product product) {
-        System.out.println("im in post..");
-        productService.addNewStudent(product);
+    public void registerNewProduct(@RequestBody Product product) {
+        productService.addNewProduct(product);
     }
 
     @DeleteMapping(path="{productID}")
-    public void deleteStudent(@PathVariable("productID") int id){
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
-        productService.deleteStudent(id);
+    public void deleteProduct(@PathVariable("productID") int id){
+        productService.deleteProduct(id);
     }
     @PutMapping(path= "{productID}")
-    public void updateStudent(
+    public void updateProduct(
             @PathVariable("productID") int productID,
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) double price,
+            @RequestParam(required = false) Double price,
             @RequestParam(required = false) String catagori,
             @RequestParam(required = false) String avilablity){
-        productService.updateStudent(productID, name, price,catagori,avilablity);
+        productService.updateProduct(productID, name, price,catagori,avilablity);
 
     }
 

@@ -33,7 +33,7 @@ public class Product {
             name="price",
             nullable = false
     )
-    private double Price;
+    private Double Price;
     @Column(
             name="catagori",
             nullable = false
@@ -47,7 +47,7 @@ public class Product {
     private String Avilable;
 
 
-    public Product(int ID, String name, double price, String catagori, String avilable) {
+    public Product(int ID, String name, Double price, String catagori, String avilable) {
         this.ID = ID;
         this.name = name;
         this.Price = price;
@@ -55,11 +55,15 @@ public class Product {
         this.Avilable = avilable;
     }
 
-    public Product(String name, double price, String catagori, String avilable) {
+    public Product(String name, Double price, String catagori, String avilable) {
         this.name = name;
         this.Price = price;
         this.Catagori = catagori;
         this.Avilable = avilable;
+    }
+
+    public Product(){
+
     }
 
     public String getAvilable() {
@@ -91,6 +95,10 @@ public class Product {
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
+    }
+
+    public int getID() {
+        return ID;
     }
 }
