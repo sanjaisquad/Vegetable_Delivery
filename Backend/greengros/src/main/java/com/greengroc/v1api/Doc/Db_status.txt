@@ -1,0 +1,37 @@
+Hibernate: create table customer (loyalty_points integer not null, id integer not null, primary key (id)) engine=InnoDB
+Hibernate: create table delivery_partner (is_approved bit not null, id integer not null, shop_id bigint not null, primary key (id)) engine=InnoDB
+Hibernate: create table product (id integer not null, catagori varchar(255) not null, price float(53) not null, image varchar(255) not null, name TEXT not null, primary key (id)) engine=InnoDB
+Hibernate: create table product_sequence (next_val bigint) engine=InnoDB
+Hibernate: insert into product_sequence values ( 1 )
+Hibernate: create table shop (id bigint not null auto_increment, address varchar(255), is_approved bit not null, name varchar(255), shop_admin_id integer, primary key (id)) engine=InnoDB
+Hibernate: create table shop_admin (id integer not null, primary key (id)) engine=InnoDB
+Hibernate: create table shop_product (id bigint not null auto_increment, avilablity bit not null, stock integer not null, product_id integer not null, shop_id bigint not null, primary key (id)) engine=InnoDB
+Hibernate: create table super_admin (admin_privileges varchar(255), id integer not null, primary key (id)) engine=InnoDB
+Hibernate: create table user (id integer not null, address varchar(255) not null, email TEXT not null, mobile_number varchar(255) not null, name varchar(255) not null, password varchar(255) not null, user_type enum ('Shop','SHOP_ADMIN','SUPER_ADMIN'), primary key (id)) engine=InnoDB
+Hibernate: alter table product drop index product_name_unique
+Hibernate: alter table product add constraint product_name_unique unique (name)
+Hibernate: alter table shop drop index UK_cnvdpfqbrcmybb3kccx0whb4a
+Hibernate: alter table shop add constraint UK_cnvdpfqbrcmybb3kccx0whb4a unique (shop_admin_id)
+Hibernate: alter table user drop index user_email_unique
+Hibernate: alter table user add constraint user_email_unique unique (email)
+Hibernate: alter table customer add constraint FKg2o3t8h0g17smtr9jgypagdtv foreign key (id) references user (id)
+Hibernate: alter table delivery_partner add constraint FKdl6vnyuomarxmd7dlb9ocstdw foreign key (shop_id) references shop (id)
+Hibernate: alter table delivery_partner add constraint FK9xiadnfn6g2srusm53rdt0rdh foreign key (id) references user (id)
+Hibernate: alter table shop add constraint FK4vrj7xe749b9nn7wv36nf4pnr foreign key (shop_admin_id) references shop_admin (id)
+Hibernate: alter table shop_admin add constraint FKmy0wxe9e2s9t5ot8co6yvje3m foreign key (id) references user (id)
+Hibernate: alter table shop_product add constraint FKagx9ubmm4qiq1whqrf5f7wdc6 foreign key (product_id) references product (id)
+Hibernate: alter table shop_product add constraint FK9n6cn7s1s7sdysss12k52v8sa foreign key (shop_id) references shop (id)
+Hibernate: alter table super_admin add constraint FKp9sfkg3wgxtc2qb05t4bt7kor foreign key (id) references user (id)
+//25.06.2024 ^
+Hibernate: create table order_item (id bigint not null auto_increment, price float(53) not null, quantity integer not null, order_id bigint, product_id integer, primary key (id)) engine=InnoDB
+Hibernate: create table orders (id bigint not null auto_increment, order_date date, status varchar(255), customer_id integer, delivery_partner_id integer, shop_id bigint, primary key (id)) engine=InnoDB
+Hibernate: alter table product drop index product_name_unique
+Hibernate: alter table product add constraint product_name_unique unique (name)
+Hibernate: alter table user drop index user_email_unique
+Hibernate: alter table user add constraint user_email_unique unique (email)
+Hibernate: alter table order_item add constraint FKt4dc2r9nbvbujrljv3e23iibt foreign key (order_id) references orders (id)
+Hibernate: alter table order_item add constraint FK551losx9j75ss5d6bfsqvijna foreign key (product_id) references product (id)
+Hibernate: alter table orders add constraint FK624gtjin3po807j3vix093tlf foreign key (customer_id) references customer (id)
+Hibernate: alter table orders add constraint FK69vrglfpls4kh7j1c409d74xp foreign key (delivery_partner_id) references delivery_partner (id)
+Hibernate: alter table orders add constraint FKqn03kko0738sehaal2gr2uxl6 foreign key (shop_id) references shop (id)
+//26.06.2024 ^

@@ -1,12 +1,14 @@
-package com.vegetable_API;
+package com.greengroc.v1api.controllers;
 
+import com.greengroc.v1api.services.ProductService;
+import com.greengroc.v1api.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/v1/product")
+@RequestMapping(path="api/ v1/Products")
 public class ProductControler {
     private final ProductService productService;
     @Autowired
@@ -33,8 +35,9 @@ public class ProductControler {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Double price,
             @RequestParam(required = false) String catagori,
-            @RequestParam(required = false) String avilablity){
-        productService.updateProduct(productID, name, price,catagori,avilablity);
+            @RequestParam(required = false) String image)
+            {
+        productService.updateProduct(productID, name, price,catagori,image);
 
     }
 

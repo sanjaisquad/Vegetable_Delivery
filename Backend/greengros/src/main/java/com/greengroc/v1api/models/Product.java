@@ -1,8 +1,8 @@
-package com.vegetable_API;
+package com.greengroc.v1api.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name="product")
 @Table(name="product",
@@ -41,37 +41,37 @@ public class Product {
     private String Catagori;
 
     @Column(
-            name="avilable",
+            name="image",
             nullable = false
     )
-    private String Avilable;
+    private String image;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShopProduct> shopProducts;
 
-    public Product(int ID, String name, Double price, String catagori, String avilable) {
+    public Product(int ID, String name, Double price, String catagori, String image) {
         this.ID = ID;
         this.name = name;
-        this.Price = price;
-        this.Catagori = catagori;
-        this.Avilable = avilable;
+        Price = price;
+        Catagori = catagori;
+        this.image = image;
     }
 
-    public Product(String name, Double price, String catagori, String avilable) {
+    public Product(String name, Double price, String catagori, String image) {
         this.name = name;
-        this.Price = price;
-        this.Catagori = catagori;
-        this.Avilable = avilable;
+        Price = price;
+        Catagori = catagori;
+        this.image = image;
     }
 
     public Product(){
 
     }
 
-    public String getAvilable() {
-        return Avilable;
+    public String getImage() {return image;
     }
 
-    public void setAvilable(String avilable) {
-        Avilable = avilable;
+    public void setImage(String image) {this.image = image;
     }
 
     public String getCatagori() {

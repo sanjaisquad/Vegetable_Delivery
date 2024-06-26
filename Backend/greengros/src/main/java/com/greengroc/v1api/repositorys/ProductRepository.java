@@ -1,5 +1,6 @@
-package com.vegetable_API;
+package com.greengroc.v1api.repositorys;
 
+import com.greengroc.v1api.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

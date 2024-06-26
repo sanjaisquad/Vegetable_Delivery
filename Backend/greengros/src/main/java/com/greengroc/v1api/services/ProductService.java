@@ -1,5 +1,6 @@
-package com.vegetable_API;
-
+package com.greengroc.v1api.services;
+ import com.greengroc.v1api.models.Product;
+import com.greengroc.v1api.repositorys.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void updateProduct(int productId, String name, Double price, String catagori, String avilablity){
+    public void updateProduct(int productId, String name, Double price, String catagori, String image){
         Product product = productRepository.findById(productId).orElseThrow(()-> new IllegalStateException("Product with id "+ productId + "does not exist"));
 
         if(price!=null &&price >0 &&  price!=product.getPrice()){
@@ -50,9 +51,9 @@ public class ProductService {
             product.setCatagori(catagori);
             System.out.println("product catagori updated successfully");
         }
-        if(avilablity != null && avilablity.length() > 0 && !Objects.equals(product.getAvilable(),avilablity)){
-            product.setAvilable(avilablity);
-            System.out.println("product Avilablity updated successfully");
+        if(image != null && image.length() > 0 && !Objects.equals(product.getImage(),image)){
+            product.setImage(image);
+            System.out.println("product image updated successfully");
         }
         System.out.println("**** updated successfully ****");
 

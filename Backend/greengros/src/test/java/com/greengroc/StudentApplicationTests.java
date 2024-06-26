@@ -1,4 +1,4 @@
-package com.vegetable_API;
+package com.greengroc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
