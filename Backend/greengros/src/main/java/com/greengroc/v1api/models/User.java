@@ -21,7 +21,7 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "product_sequence"
     )
-    private int ID;
+    private Long ID;
 
     @Column(
             name = "name",
@@ -32,7 +32,7 @@ public class User {
     @Column(
             name = "Email",
             nullable = false,
-            columnDefinition = "TEXT"
+            unique = true
     )
     private String email;
 
@@ -54,12 +54,13 @@ public class User {
     )
     private String mobileNumber;
 
-
-    @Enumerated(EnumType.STRING)
+    @Column(name="user_type",
+    nullable = false)
+//    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     //Constructor
-    public User(int ID, String name, String email, String password, String address, String mobileNumber, UserType userType) {
+    public User(Long ID, String name, String email, String password, String address, String mobileNumber, UserType userType) {
         this.ID = ID;
         this.name = name;
         this.email = email;
@@ -78,15 +79,23 @@ public class User {
         this.userType = userType;
     }
 
-    public User() {
+    public User(User user) {
+        this.name=user.name;
+        this.email = user.email;
+        this.password = user.password;
+        this.address = user.address;
+        this.mobileNumber = user.mobileNumber;
+        this.userType = user.userType;
+
     }
+    public User(){}
 
     //getter and setter
-    public int getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 

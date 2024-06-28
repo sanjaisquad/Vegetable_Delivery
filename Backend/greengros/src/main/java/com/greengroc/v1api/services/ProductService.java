@@ -1,6 +1,6 @@
 package com.greengroc.v1api.services;
  import com.greengroc.v1api.models.Product;
-import com.greengroc.v1api.repositorys.ProductRepository;
+import com.greengroc.v1api.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

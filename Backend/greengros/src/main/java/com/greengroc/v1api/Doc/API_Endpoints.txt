@@ -1,0 +1,72 @@
+User Endpoints
+Register User
+
+POST /api/v1/users/register
+Request Body: {"name": "John", "email": "john@example.com", "password": "password", "mobileNumber": "1234567890", "address": "123 Main St", "userType": "CUSTOMER"}
+Login User
+
+POST /api/v1/users/login
+Request Body: {"email": "john@example.com", "password": "password"}
+-------------------------------------------------------------------------------------------------
+Customer Endpoints
+Get Customer Details
+GET /api/v1/customers/{customerId}
+Path Variable: customerId
+-------------------------------------------------------------------------------------------------
+ShopAdmin Endpoints
+Register Shop Admin
+
+POST /api/v1/shopAdmins/register
+Request Body: {"name": "Jane", "email": "jane@example.com", "password": "password", "mobileNumber": "1234567890", "address": "456 Market St", "userType": "SHOP_ADMIN"}
+Request Shop Creation
+
+POST /api/v1/shops/request
+Request Body: {"shopAdminId": 1, "shopName": "Fresh Produce", "shopAddress": "789 Commerce St"}
+Approve Shop
+
+POST /api/v1/shops/approve
+Request Body: {"shopId": 1, "isApproved": true}
+--------------------------------------------------------------------------------------------------
+SuperAdmin Endpoints
+Register Super Admin
+
+POST /api/v1/superAdmins/register
+Request Body: {"name": "Alice", "email": "alice@example.com", "password": "password", "mobileNumber": "1234567890", "address": "101 Admin St", "userType": "SUPER_ADMIN", "adminPrivileges": "ALL_PRIVILEGES"}
+Get All Shop Requests
+
+GET /api/v1/shops/requests
+--------------------------------------------------------------------------------------------------
+Product Endpoints
+Create Product
+
+POST /api/v1/products
+Request Body: {"name": "Tomato", "description": "Fresh tomatoes", "price": 10.0, "image": "image_url"}
+Get All Products
+
+GET /api/v1/products
+---------------------------------------------------------------------------------------------------
+Order Endpoints
+Create Order
+
+POST /api/v1/orders
+Request Body: {"customerId": 1, "shopId": 1, "orderItems": [{"productId": 1, "quantity": 5}], "orderStatus": "PENDING"}
+Get Order Details
+
+GET /api/v1/orders/{orderId}
+Path Variable: orderId
+Update Order Status
+
+PUT /api/v1/orders/{orderId}/status
+Path Variable: orderId
+Request Body: {"orderStatus": "APPROVED"}
+----------------------------------------------------------------------------------------------------
+Delivery Partner Endpoints
+Register Delivery Partner
+
+POST /api/v1/deliveryPartners/register
+Request Body: {"name": "Bob", "email": "bob@example.com", "password": "password", "mobileNumber": "1234567890", "address": "202 Delivery St", "userType": "DELIVERY_PARTNER", "shopId": 1}
+
+Get Delivery Partner Details
+
+GET /api/v1/deliveryPartners/{deliveryPartnerId}
+Path Variable: deliveryPartnerId

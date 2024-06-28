@@ -16,7 +16,7 @@ public class DeliveryPartner extends User {
 
     //Constructor
 
-    public DeliveryPartner(int ID, String name, String email, String password, String address, String mobileNumber, UserType userType, boolean isApproved, Shop shop) {
+    public DeliveryPartner(Long ID, String name, String email, String password, String address, String mobileNumber, UserType userType, boolean isApproved, Shop shop) {
         super(ID, name, email, password, address, mobileNumber, userType);
         this.isApproved = isApproved;
         this.shop = shop;
@@ -29,10 +29,12 @@ public class DeliveryPartner extends User {
     }
 
     public DeliveryPartner(boolean isApproved, Shop shop) {
+
         this.isApproved = isApproved;
         this.shop = shop;
     }
     public DeliveryPartner(){
+
 
     }
 

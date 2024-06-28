@@ -11,7 +11,7 @@ public class Customer extends User{
 
     //Constructor
 
-    public Customer(int ID, String name, String email, String password, String address, String mobileNumber, UserType userType, int loyaltyPoints) {
+    public Customer(Long ID, String name, String email, String password, String address, String mobileNumber, UserType userType, int loyaltyPoints) {
         super(ID, name, email, password, address, mobileNumber, userType);
         this.loyaltyPoints = loyaltyPoints;
     }
@@ -20,8 +20,13 @@ public class Customer extends User{
         super(name, email, password, address, mobileNumber, userType);
         this.loyaltyPoints = loyaltyPoints;
     }
+    public Customer(User user){
+        super(user);
+        this.loyaltyPoints=0;
+    }
 
     public Customer(int loyaltyPoints) {
+
         this.loyaltyPoints = loyaltyPoints;
     }
 

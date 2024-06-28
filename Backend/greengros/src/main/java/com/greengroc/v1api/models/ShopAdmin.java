@@ -21,11 +21,15 @@ public class ShopAdmin extends User{
         this.shop = shop;
     }
 
-    public ShopAdmin(int ID, String name, String email, String password, String address, String mobileNumber, UserType userType, Shop shop) {
+    public ShopAdmin(Long ID, String name, String email, String password, String address, String mobileNumber, UserType userType, Shop shop) {
         super(ID, name, email, password, address, mobileNumber, userType);
         this.shop = shop;
     }
-    public ShopAdmin(){
+    public ShopAdmin(User user){
+        super(user);
+    }
+
+    public ShopAdmin() {
 
     }
 

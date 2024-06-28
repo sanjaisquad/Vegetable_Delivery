@@ -8,7 +8,7 @@ public class SuperAdmin extends User{
     private String adminPrivileges;
 
     //constructor
-    public SuperAdmin(int ID, String name, String email, String password, String address, String mobileNumber, UserType userType, String adminPrivileges) {
+    public SuperAdmin(Long ID, String name, String email, String password, String address, String mobileNumber, UserType userType, String adminPrivileges) {
         super(ID, name, email, password, address, mobileNumber, userType);
         this.adminPrivileges = adminPrivileges;
     }
@@ -22,7 +22,13 @@ public class SuperAdmin extends User{
         this.adminPrivileges = adminPrivileges;
     }
 
-    public SuperAdmin(){
+    public SuperAdmin(User user){
+        super(user);
+        this.adminPrivileges="Good admin";
+
+    }
+
+    public SuperAdmin() {
 
     }
 
