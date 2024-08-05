@@ -1,5 +1,9 @@
 package com.greengroc.v1api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -9,6 +13,11 @@ public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(
+            name="Name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String name;
     private String address;
     private boolean isApproved;
@@ -18,9 +27,11 @@ public class Shop {
     private ShopAdmin shopAdmin;
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore // Ignore this property during JSON serialization to avoid cyclic reference
     private List<DeliveryPartner> deliveryPartners;
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore// Ignore this property during JSON serialization to avoid cyclic reference
     private List<ShopProduct> shopProducts;
 
     //constructor
@@ -104,4 +115,6 @@ public class Shop {
     public void setShopProducts(List<ShopProduct> shopProducts) {
         this.shopProducts = shopProducts;
     }
+
+
 }

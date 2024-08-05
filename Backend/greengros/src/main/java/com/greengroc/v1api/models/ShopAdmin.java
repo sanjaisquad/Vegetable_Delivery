@@ -1,5 +1,6 @@
 package com.greengroc.v1api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.greengroc.v1api.utils.UserType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -7,6 +8,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class ShopAdmin extends User{
     @OneToOne(mappedBy = "shopAdmin")
+    @JsonBackReference
     private Shop shop;
 
     //constructor

@@ -1,5 +1,9 @@
 package com.greengroc.v1api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -8,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
+@JsonInclude(JsonInclude.Include.NON_NULL)  // Include this at the class level to handle all fields
 public class Order {
 
 
@@ -17,9 +22,9 @@ public class Order {
         private String status;
         private Date orderDate;
 
-        @ManyToOne
-        @JoinColumn(name = "customer_id")
-        private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
         @ManyToOne
         @JoinColumn(name = "shop_id")
@@ -30,6 +35,7 @@ public class Order {
         private DeliveryPartner deliveryPartner;
 
         @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+        @JsonManagedReference
         private List<OrderItem> orderItems = new ArrayList<>();
 
         // Constructor, getters, and setters
@@ -113,4 +119,7 @@ public class Order {
         }
 
 
+    public Long getShopId() {
+            return shop.getId();
+    }
 }

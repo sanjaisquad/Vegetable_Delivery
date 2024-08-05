@@ -1,5 +1,6 @@
 package com.greengroc.v1api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import com.greengroc.v1api.utils.UserType;
 
@@ -21,7 +22,7 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "product_sequence"
     )
-    private Long ID;
+    private Long id;
 
     @Column(
             name = "name",
@@ -40,6 +41,7 @@ public class User {
             name = "password",
             nullable = false
     )
+
     private String password;
 
     @Column(
@@ -61,7 +63,7 @@ public class User {
 
     //Constructor
     public User(Long ID, String name, String email, String password, String address, String mobileNumber, UserType userType) {
-        this.ID = ID;
+        this.id = ID;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -92,11 +94,11 @@ public class User {
 
     //getter and setter
     public Long getID() {
-        return ID;
+        return id;
     }
 
     public void setID(Long ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public String getName() {

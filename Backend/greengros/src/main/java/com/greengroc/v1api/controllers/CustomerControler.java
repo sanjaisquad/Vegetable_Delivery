@@ -4,11 +4,10 @@ import com.greengroc.v1api.models.Customer;
 import com.greengroc.v1api.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/customers")
 public class CustomerControler {
 

@@ -26,7 +26,5 @@ public class SuperAdminController {
     }
 
     @GetMapping("/shops/requests")
-    public ResponseEntity<List<Shop>> getAllShopRequests() {
-        return ResponseEntity.ok(shopService.getAllShopRequests());
-    }
+    public ResponseEntity<List<Shop>> getAllShopRequests() {return ResponseEntity.ok(shopService.getAllShopRequests());}
 }

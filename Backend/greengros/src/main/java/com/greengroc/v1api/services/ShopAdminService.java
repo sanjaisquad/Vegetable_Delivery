@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShopAdminService {
 
+    private final ShopAdminRepository shopAdminRepository;
+
     @Autowired
-    private ShopAdminRepository shopAdminRepository;
+    public ShopAdminService(ShopAdminRepository shopAdminRepository) {
+        this.shopAdminRepository = shopAdminRepository;
+    }
 
     public ShopAdmin registerShopAdmin(ShopAdmin shopAdmin) {
         return shopAdminRepository.save(shopAdmin);
