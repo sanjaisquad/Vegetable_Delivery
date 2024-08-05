@@ -1,5 +1,7 @@
 package com.greengroc.v1api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -47,6 +49,7 @@ public class Product {
     private String image;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+  //  @JsonIgnoreProperties("product") // Ignore this property during JSON serialization to avoid cyclic reference
     private List<ShopProduct> shopProducts;
 
     public Product(int ID, String name, Double price, String catagori, String image) {
