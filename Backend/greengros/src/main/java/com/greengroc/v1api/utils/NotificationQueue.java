@@ -15,6 +15,7 @@ public class NotificationQueue {
 
     public static Order getNextNotification(Long shopId) {
         Queue<Order> queue = notificationMap.get(shopId);
+
         if (queue != null) {
             return queue.poll();
         }

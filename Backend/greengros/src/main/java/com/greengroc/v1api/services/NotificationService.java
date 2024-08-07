@@ -4,6 +4,8 @@ import com.greengroc.v1api.models.Order;
 import com.greengroc.v1api.utils.NotificationQueue;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NotificationService {
 
